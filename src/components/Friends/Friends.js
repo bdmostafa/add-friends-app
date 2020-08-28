@@ -1,30 +1,46 @@
 import React from 'react';
+import '../../assets/css/bootstrap.min.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAddressCard } from '@fortawesome/free-solid-svg-icons';
+import { Card } from 'react-bootstrap';
+import { useState } from 'react';
+
+
 
 const Friends = (props) => {
     // console.log(props.friend);
     const { name, username, email, address, company, phone, website, img } = props.friend;
-    const ulStyle = {
-        listStyle: 'none',
-        textAlign: 'start',
-        marginTop: '5px',
-        fontWeight: 'bold'
+
+    // Change text when btn clicked
+    const [text, setText] = useState('Add Member');
+
+    // Validation - handling onClick whether member is added or Not
+    const handleOnClick = () => {
+        if (text === 'Added') alert('You have already added this member!')
+        else {
+            props.addMember(props.friend);
+            setText('Added');
+        }
     }
+
+
     return (
-        <div className="d-flex justify-content-start p-2">
-            <img className="w-25" src={img} alt=""/>
-            <ul style={ulStyle}>
-                <li>Name: {name}</li>
-                <li>Username: {username}</li>
-                <li>Email: {email}</li>
-                <li>Address: {address.street, address.city, address.zipcode} </li>
-                <li>Company: {company.name}</li>
-                <li>Phone: {phone}</li>
-                <li>Website: {website}</li>
-                <button className="btn btn-primary p-2"><FontAwesomeIcon icon={faAddressCard} /> Add Friend</button>
-            </ul>
-        </div>
+        <>
+            <Card border="primary" style={{ textAlign: 'left' }}>
+                <Card.Img variant="top" src={img} style={{}} />
+                {/* <Image src={img} roundedCircle  /> */}
+                <Card.Body>
+                    <Card.Title> {name} </Card.Title>
+                    <Card.Text> <small> Username: {username} </small> </Card.Text>
+                    <Card.Text> Email: {email} </Card.Text>
+                    <Card.Text> Address: {address.street}, {address.city}, {address.zipcode} </Card.Text>
+                    <Card.Text> Company: {company.name} </Card.Text>
+                    <Card.Text> Phone: {phone} </Card.Text>
+                    <Card.Text> Website: {website} </Card.Text>
+                    <button onClick={handleOnClick} className="btn btn-primary"><FontAwesomeIcon icon={faAddressCard} /> {text} </button>
+                </Card.Body>
+            </Card>
+        </>
     );
 };
 

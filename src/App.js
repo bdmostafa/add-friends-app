@@ -2,21 +2,18 @@ import React, { useState } from 'react';
 import './App.css';
 import Header from './components/Header/Header';
 import friendsList from '../src/FakeData/FakeData';
-import Friends from './components/Friends/Friends';
-import Salary from './components/Salary/Salary';
+import Main from './components/Main/Main';
+import Footer from './components/Footer/Footer';
 
 function App() {
   // Store data in State
   const [friends, setFriends] = useState(friendsList);
-  const [salaray, setSalary] = useState(0);
 
   return (
-    <div className="App">
+    <div className="App container">
       <Header></Header>
-      {
-        friends.map(friend => <Friends key={friend.id} friend={friend} ></Friends>)
-      }
-      <Salary></Salary>
+      <Main friends={friends}></Main>
+      <Footer></Footer>
     </div>
   );
 }

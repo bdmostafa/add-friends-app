@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Salary = () => {
+const Footer = () => {
     return (
         <div>
-            
+            <h2>This is footer</h2>
         </div>
     );
 };
 
-export default Salary;
+export default Footer;
