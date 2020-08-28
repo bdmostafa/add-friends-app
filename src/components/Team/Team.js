@@ -21,8 +21,8 @@ const Team = (props) => {
                         members.map((member, idx) =>
                             <tr key={member.id}>
                                 <td> {idx + 1}</td>
-                                <td>{member.name} </td>
-                                <td> {member.phone} </td>
+                                <td>{member.name.first} </td>
+                                <td> {member.cell} </td>
                                 <td> {member.email} </td>
                             </tr>
                         )

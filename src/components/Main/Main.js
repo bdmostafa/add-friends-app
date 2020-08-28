@@ -15,8 +15,14 @@ const Main = (props) => {
         <>
             <main style={{ display: 'flex' }}>
                 <CardColumns className="w-75">
+                    {/* 
+                    From stored JSON data 
                     {
                         props.friends.map(friend => <Friends key={friend.id} friend={friend} addMember={handleAddMember} ></Friends>)
+                    } */}
+
+                    {
+                        props.friends.map(friend => <Friends key={friend.login.md5} friend={friend} addMember={handleAddMember} ></Friends>)
                     }
                 </CardColumns>
                 <Team membersData={members}></Team>
