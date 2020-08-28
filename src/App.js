@@ -1,24 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import Header from './components/Header/Header';
+import friendsList from '../src/FakeData/FakeData';
+import Friends from './components/Friends/Friends';
+import Salary from './components/Salary/Salary';
 
 function App() {
+  // Store data in State
+  const [friends, setFriends] = useState(friendsList);
+  const [salaray, setSalary] = useState(0);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header></Header>
+      {
+        friends.map(friend => <Friends key={friend.id} friend={friend} ></Friends>)
+      }
+      <Salary></Salary>
     </div>
   );
 }
