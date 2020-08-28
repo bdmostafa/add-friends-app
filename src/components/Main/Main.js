@@ -19,7 +19,7 @@ const Main = (props) => {
                         props.friends.map(friend => <Friends key={friend.id} friend={friend} addMember={handleAddMember} ></Friends>)
                     }
                 </CardColumns>
-                <Team></Team>
+                <Team membersData={members}></Team>
             </main>
         </>
     );

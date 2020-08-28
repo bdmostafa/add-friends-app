@@ -1,10 +1,12 @@
 import React from 'react';
 import { Table } from 'react-bootstrap';
 
-const Team = () => {
+const Team = (props) => {
+    const members = props.membersData;
+
     return (
         <div className="pl-3">
-            <h2>Team Members</h2>
+            <h4>Total Team Members {members.length} </h4>
             <Table striped bordered hover>
                 <thead>
                     <tr>
@@ -15,12 +17,16 @@ const Team = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr>
+                    {
+                        members.map((member, idx) =>
+                            <tr key={member.id}>
+                                <td> {idx + 1}</td>
+                                <td>{member.name} </td>
+                                <td> {member.phone} </td>
+                                <td> {member.email} </td>
+                            </tr>
+                        )
+                    }
                 </tbody>
             </Table>
         </div>
